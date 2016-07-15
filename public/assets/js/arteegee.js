@@ -205,7 +205,16 @@
     })
 
     function initialize() {
-        peer = new Peer({key: 'ducj8titby2pgb9'})
+
+         peer = new Peer( {
+  key: 'ducj8titby2pgb9',
+  debug: 3,
+  config: {'iceServers': [
+    { url: 'stun:stun1.l.google.com:19302' },
+    { url: 'turn:numb.viagenie.ca',
+      credential: 'muazkh', username: 'webrtc@live.com' }
+  ]}
+});
         peer.on('open', function(id) {
         	$('#my-id').text(peer.id);
             peerId = id;
