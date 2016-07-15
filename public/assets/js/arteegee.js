@@ -22,35 +22,9 @@
         [],
         []
     ]
-    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
-    // PeerJS object
-   
-    // Receiving a call
 
-    // peer.on('error', function(err){
-    //   //alert(err.message);
-    //   // Return to step 2 if error occurs
-    //   step2();
-    // });
-    // Click handlers setup
-    $(function(){
-      $('#make-call').click(function(){
-        // Initiate a call!
-        var call = peer.call($('#callto-id').val(), window.localStream);
-        step3(call);
-      });
-      $('#end-call').click(function(){
-        window.existingCall.close();
-        step2();
-      });
-      // Retry if getUserMedia fails
-      $('#step1-retry').click(function(){
-        $('#step1-error').hide();
-        step1();
-      });
-      // Get things started
-      step1();
-    });
+      navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+
     function step1 () {
       // Get audio/video stream
       navigator.getUserMedia({audio: true, video: true}, function(stream){
@@ -80,7 +54,6 @@
       $('#step1, #step2').hide();
       $('#step3').show();
     }
-
 
     function begin() {
         conn.on('data', function(data) {
@@ -113,7 +86,7 @@
             turn = false
         })
         peer.on('error', function(err) {
-            alert('' + err)
+            console.log('' + err);
             turn = false
         })
     }
@@ -244,8 +217,9 @@
             console.log('My peer ID is: ' + id);
         })
         peer.on('error', function(err) {
-            alert('' + err)
+            console.log('' + err);
         })
+
 	    peer.on('call', function(call){
 	      // Answer the call automatically (instead of prompting user) for demo purposes
 	      call.answer(window.localStream);
@@ -281,6 +255,11 @@
             $('#game .alert p').text('Your move!')
             begin()
         })
+        peer.on('call', function(call){
+      // Answer the call automatically (instead of prompting user) for demo purposes
+      call.answer(window.localStream);
+      step3(call);
+    });
     }
 
     function join() {
@@ -320,5 +299,22 @@
         $('#game .grid tr td:nth-child(' + ($(this).index() + 1) + ')').removeClass('hover')
     })
 
-
+$(function(){
+      $('#make-call').click(function(){
+        // Initiate a call!
+        var call = peer.call($('#callto-id').val(), window.localStream);
+        step3(call);
+      });
+      $('#end-call').click(function(){
+        window.existingCall.close();
+        step2();
+      });
+      // Retry if getUserMedia fails
+      $('#step1-retry').click(function(){
+        $('#step1-error').hide();
+        step1();
+      });
+      // Get things started
+      step1();
+    });
 })()
