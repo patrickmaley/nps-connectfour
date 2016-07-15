@@ -24,8 +24,7 @@
     ]
 
       navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
-
-    function step1 () {
+function step1 () {
       // Get audio/video stream
       navigator.getUserMedia({audio: true, video: true}, function(stream){
         // Set your video displays
@@ -54,6 +53,7 @@
       $('#step1, #step2').hide();
       $('#step3').show();
     }
+    
 
     function begin() {
         conn.on('data', function(data) {
