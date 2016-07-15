@@ -205,7 +205,7 @@
     })
 
     function initialize() {
-        peer = new Peer({　host:'peerjs-server.herokuapp.com', secure:true, port:443, key: 'peerjs', debug: 3})
+        peer = new Peer({key: 'ducj8titby2pgb9'})
         peer.on('open', function(id) {
         	$('#my-id').text(peer.id);
             peerId = id;
