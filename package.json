@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "Connect Four over WebRTC",
   "main": "index.js",
+  "web": "index.js",
   "scripts": {
     "start": "node index.js"
   },
