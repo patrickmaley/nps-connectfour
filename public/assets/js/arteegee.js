@@ -24,8 +24,7 @@
     ]
 
       navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
-
-    function step1 () {
+function step1 () {
       // Get audio/video stream
       navigator.getUserMedia({audio: true, video: true}, function(stream){
         // Set your video displays
@@ -54,6 +53,7 @@
       $('#step1, #step2').hide();
       $('#step3').show();
     }
+    
 
     function begin() {
         conn.on('data', function(data) {
@@ -205,7 +205,28 @@
     })
 
     function initialize() {
-        peer = new Peer({key: 'ducj8titby2pgb9'})
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+         peer = new Peer( {
+  key: 'ducj8titby2pgb9',
+  debug: 3,
+  config: {'iceServers': [
+    { url: 'stun:stun1.l.google.com:19302' },
+    { url: 'turn:numb.viagenie.ca',
+      credential: 'muazkh', username: 'webrtc@live.com' }
+  ]}
+});
+=======
+        peer = new Peer({　host:'peerjs-server.herokuapp.com', secure:true, port:443, key: 'peerjs', debug: 3})
+>>>>>>> parent of f6aec03... Heroku attempt 3
+=======
+        peer = new Peer({　host:'peerjs-server.herokuapp.com', secure:true, port:443, key: 'peerjs', debug: 3})
+>>>>>>> parent of f6aec03... Heroku attempt 3
+=======
+        peer = new Peer({　host:'peerjs-server.herokuapp.com', secure:true, port:443, key: 'peerjs', debug: 3})
+>>>>>>> parent of f6aec03... Heroku attempt 3
         peer.on('open', function(id) {
         	$('#my-id').text(peer.id);
             peerId = id;
