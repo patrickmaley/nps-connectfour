@@ -206,6 +206,7 @@ function step1 () {
 
     function initialize() {
 <<<<<<< HEAD
+<<<<<<< HEAD
 
          peer = new Peer( {
   key: 'ducj8titby2pgb9',
@@ -216,6 +217,9 @@ function step1 () {
       credential: 'muazkh', username: 'webrtc@live.com' }
   ]}
 });
+=======
+        peer = new Peer({　host:'peerjs-server.herokuapp.com', secure:true, port:443, key: 'peerjs', debug: 3})
+>>>>>>> parent of f6aec03... Heroku attempt 3
 =======
         peer = new Peer({　host:'peerjs-server.herokuapp.com', secure:true, port:443, key: 'peerjs', debug: 3})
 >>>>>>> parent of f6aec03... Heroku attempt 3
